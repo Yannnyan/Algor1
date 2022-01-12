@@ -96,7 +96,7 @@ public class Median {
             quick_sort(array,start,end);
             medians[i] = array[2 + 5 * i];
         }
-        int k = SELECT(medians, array.length/10)
+        int k = SELECT(medians, array.length/10);
         return k;
     }
     // returns array at size of end - start + 1
