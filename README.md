@@ -9,7 +9,9 @@
 [fib-Dynamic]()</br>
 [Matrix-Chain-Mult]()</br>
 [BFS]()</br>
-
+[DFS]()</br>
+[finding SCC in a graph]()</br>
+[union-find]()</br>
 
 
 
