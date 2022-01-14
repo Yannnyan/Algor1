@@ -42,23 +42,16 @@ public class BFS {
 
     public static void BFSVISIT(int[][] adjecancyMatrix, int[] distances, int[] predecessors, int[] colors,
                                 ArrayList q, int nodeID ){
-        int curdistance, dist_to_discovered;
         for (int i = 0; i < adjecancyMatrix.length; i++) {
-            if(colors[i] != BLACK) {
-                curdistance = distances[i];
+            if(colors[i] == WHITE && adjecancyMatrix[nodeID][i] != -1) {
+                distances[i] = distances[nodeID] + 1;
+                predecessors[i] = nodeID;
                 colors[i] = GRAY;
-                if(!q.contains(i)) q.add(i);
-                dist_to_discovered = adjecancyMatrix[nodeID][i] + distances[nodeID];
-                if (dist_to_discovered < curdistance) {
-                    distances[i] = dist_to_discovered;
-                    predecessors[i] = nodeID;
-                }
+                q.add(i);
             }
         }
         colors[nodeID] = BLACK;
     }
-
-
 
 
 }
