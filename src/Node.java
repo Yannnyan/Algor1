@@ -1,7 +1,13 @@
 import java.util.HashMap;
 
 public class Node {
-    // idDest : weight of edge
-    HashMap<Integer, Integer> neighbors;
+    Node father;
     public int id;
+    public int weight;
+    public Node(int id){
+        father = null;
+        id = id;
+        weight = 0;
+
+    }
 }
