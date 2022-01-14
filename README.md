@@ -12,6 +12,7 @@
 [DFS]()</br>
 [finding SCC in a graph]()</br>
 [union-find]()</br>
+[Graham scan for CH]()</br>
 
 
 
