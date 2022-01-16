@@ -13,6 +13,14 @@
 [finding SCC in a graph]()</br>
 [union-find]()</br>
 [Graham scan for CH]()</br>
+[Kruskal-BST]()</br>
+[Bellmanford-ss shortest path]()</br>
+[Dijkstra-ss shortest path]()</br>
+[Matrix-mult-all shortest path]()</br>
+[Floyd Warshall-all shortest path]()</br>
+
+
+
 
 
 
