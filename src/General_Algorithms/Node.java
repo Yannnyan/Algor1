@@ -1,4 +1,4 @@
-import java.util.HashMap;
+package General_Algorithms;
 
 public class Node {
     Node father;
