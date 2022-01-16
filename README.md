@@ -10,7 +10,7 @@
 [Matrix-Chain-Mult]()</br>
 [BFS]()</br>
 [DFS]()</br>
-[finding SCC in a graph]()</br>
+[finding SCC in a directed graph]()</br>
 [union-find]()</br>
 [Graham scan for CH]()</br>
 [Kruskal-MST]()</br>
