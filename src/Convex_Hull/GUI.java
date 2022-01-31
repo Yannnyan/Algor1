@@ -5,12 +5,13 @@ import java.awt.*;
 
 public class GUI {
     public static void main(String[] args){
-        GUI gui = new GUI();
+        //Controller.main(null);
 
     }
     Panel panel;
+    JFrame frame;
     public void createAndShowGUI(node[] nodes, edge[] edges){
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         frame.setSize(800,500);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -37,14 +38,7 @@ public class GUI {
         panel.repaint();
     }
 }
-class node{
-    int id;
-    public double x,y;
-    node(double x, double y){
-        this.x = x;
-        this.y = y;
-    }
-}
+
 class edge{
     public node dest,source;
     public edge(node dest, node source){
@@ -63,12 +57,14 @@ class Panel extends JPanel {
 
 
     Panel(node[] nodes,edge[] edges, int widthCanvas, int heightCanvas){
+
         this.nodes = nodes;
         this.edges = edges;
-        this.widthCanvas = widthCanvas - marginX;
-        this.heightCanvas = heightCanvas - marginY;
+        this.widthCanvas = widthCanvas - 2*marginX;
+        this.heightCanvas = heightCanvas - 3*marginY;
         setMin();
         this.repaint();
+
     }
 
     private void setMin(){
@@ -110,8 +106,9 @@ class Panel extends JPanel {
         if(edges != null)
         for(edge ed : edges){
             if(ed == null) continue;
-            g.drawLine(getNodeXCanvas(ed.source ),getNodeYCanvas(ed.source)+heightOval/2,
-                    getNodeXCanvas(ed.dest) , getNodeYCanvas(ed.dest) + heightOval /2);
+            g.drawLine(getNodeXCanvas(ed.source ) + widthOval/2,getNodeYCanvas(ed.source)+heightOval/2,
+                    getNodeXCanvas(ed.dest) + widthOval/2 , getNodeYCanvas(ed.dest) + heightOval /2);
         }
+        this.requestFocus();
     }
 }

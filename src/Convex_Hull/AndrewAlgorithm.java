@@ -29,34 +29,51 @@ public class AndrewAlgorithm {
         else if(res > 0) return 1;
         else return 0;
     }
+    public node[] getArray(LinkedList<node> stak){
+        node[] myar = new node[stak.size()];
+        for (int i = 0; i < myar.length; i++) {
+            myar[i] = stak.pop();
+        }
+        return myar;
+    }
     public void runAlgorithm(node[] nodes){
         sortArray(nodes);
-        Stack<node> upperHull = new Stack<>();
-        Stack<node> lowerHull = new Stack<>();
+        LinkedList<node> upperHull = new LinkedList<>();
+        LinkedList<node> lowerHull = new LinkedList<>();
         int n = nodes.length;
-        node[] hull = new node[2*n];
+        node[] hull = new node[n];
         hull[0] = nodes[0];
+        long time;
         for (int i = 0; i < n; i++) {
-            while(upperHull.size() >= 2 && orient(upperHull.get(1),upperHull.get(0),nodes[i]) < 0){
-                upperHull.pop();
-               // Controller.updateGui((node[])upperHull.stream().toArray());
+            while(upperHull.size() >= 2 && orient(upperHull.get(upperHull.size()-2),upperHull.getLast(),nodes[i]) <= 0){
+                upperHull.removeLast();
+                Controller.updateGui((node[]) upperHull.stream().toArray());
+                time = System.currentTimeMillis();
+                while(System.currentTimeMillis() - time < 500)
+                    continue;
             }
-            upperHull.push(nodes[i]);
-            //Controller.updateGui((node[])upperHull.stream().toArray());
+            upperHull.add(nodes[i]);
+            time = System.currentTimeMillis();
+           while(System.currentTimeMillis() - time < 500)
+               continue;
+           if(upperHull != null)
+             Controller.updateGui(getArray(upperHull));
+
         }
         int indexHull = 0;
         while(upperHull.size() > 0)
             hull[indexHull++] = upperHull.pop();
+
         for (int i = n -1; i >= 0; i--) {
-            while(lowerHull.size() >= 2 && orient(lowerHull.get(1),lowerHull.get(0),nodes[i]) < 0){
-                lowerHull.pop();
+            while(lowerHull.size() >= 2 && orient(lowerHull.get(lowerHull.size()-2),lowerHull.getLast(),nodes[i]) <= 0){
+                lowerHull.removeLast();
                 //Controller.updateGui((node[])lowerHull.stream().toArray());
             }
-            lowerHull.push(nodes[i]);
+            lowerHull.add(nodes[i]);
             //Controller.updateGui((node[])lowerHull.stream().toArray());
         }
         while(lowerHull.size() > 0)
-            hull[indexHull] = lowerHull.pop();
+            hull[indexHull++] = lowerHull.pop();
         Controller.updateGui(hull);
 
     }

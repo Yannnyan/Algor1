@@ -3,7 +3,12 @@ package Convex_Hull;
 public class Controller {
     private static GUI gui;
     public static void main(String[] args){
-        gui = new GUI();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                gui = new GUI();
+            }
+        });
         AndrewAlgorithm andrew = new AndrewAlgorithm();
         node[] nodes = new node[15];
         double x,y;
