@@ -57,19 +57,20 @@ public class Graham_Scan {
         }
         Point minimal_point = points[index];
 
-        quicksort(points,comparator,minimal_point); // sort the list with the comparator
-        Stack<Point> stack = new Stack<>();
-        stack.add(points[0]);
-        stack.add(points[1]);
+//        quicksort(points,comparator,minimal_point); // sort the list with the comparator
+//        Stack<Point> stack = new Stack<>();
+//        stack.add(points[0]);
+//        stack.add(points[1]);
 
 
-        for (int i = 3; i < points.length; i++) {
-            while(comparator(stack.elementAt(1),stack.elementAt(0),points[i]) < 0){ // while makes a left turn pop
-                stack.pop();
-            }
-            stack.push(points[i]);
-        }
-        ArrayList<Point> ret = (ArrayList<Point>) stack.stream().toList();
-        return ret;
+//        for (int i = 3; i < points.length; i++) {
+//            while(comparator(stack.elementAt(1),stack.elementAt(0),points[i]) < 0){ // while makes a left turn pop
+//                stack.pop();
+//            }
+//            stack.push(points[i]);
+//        }
+//        ArrayList<Point> ret = (ArrayList<Point>) stack.stream().toList();
+//        return ret;
+        return null;
     }
 }

@@ -43,15 +43,16 @@ public class DFS {
 
 
     public static ArrayList Topological_sort(int[][] adjecancy_matrix){
-        if(! Belman_ford(adjecancy_matrix)) // if there is a cycle in the graph then return null
-            return null;
-        int[] finishing_times = DFS(adjecancy_matrix); // else go forth
-        ArrayList<Integer> linkedlist = new ArrayList<>();
-        quicksort(finishing_times);
-        for (int i = finishing_times-1; i > 0; i--) {
-            linkedlist.add(finishing_times[i]);
-        }
-        return linkedlist;
+//        if(! Belman_ford(adjecancy_matrix)) // if there is a cycle in the graph then return null
+//            return null;
+//        int[] finishing_times = DFS(adjecancy_matrix); // else go forth
+//        ArrayList<Integer> linkedlist = new ArrayList<>();
+//        quicksort(finishing_times);
+//        for (int i = finishing_times-1; i > 0; i--) {
+//            linkedlist.add(finishing_times[i]);
+//        }
+       // return linkedlist;
+        return null;
     }
 
 
