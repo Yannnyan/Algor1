@@ -63,7 +63,6 @@ class Panel extends JPanel {
         this.widthCanvas = widthCanvas - 2*marginX;
         this.heightCanvas = heightCanvas - 3*marginY;
         setMin();
-        this.repaint();
 
     }
 
@@ -77,32 +76,40 @@ class Panel extends JPanel {
     }
     private int getNodeXCanvas(node nod){
         double lenX = Math.abs(this.maxX - this.minX);
-        double portionX = Math.abs(this.maxX - nod.x);
-        if(portionX == 0.0)
-            return this.widthCanvas -marginX;
-        if(portionX / lenX == 1.0)
+        double portionX = Math.abs(this.maxX - (nod.x- minX));
+        if(nod.x == maxX)
+            return this.widthCanvas + marginX;
+        if(nod.x == minX)
             return marginX;
-        return (int)((portionX/lenX) * this.widthCanvas) + marginX;
+        return (int)(((maxX - portionX)/lenX) * this.widthCanvas) + marginX;
     }
     private int getNodeYCanvas(node nod){
         double lenY = this.maxY - this.minY;
-        double portionY = this.maxY - nod.y;
-        if(portionY == 0)
-            return this.heightCanvas - marginY;
-        if(portionY == 1.0)
+        double portionY = this.maxY - (nod.y-minY);
+        if(nod.y == maxY)
+            return this.heightCanvas + marginY;
+        if(nod.y == minY)
             return marginY;
-        return (int)((portionY/lenY) * this.heightCanvas) + marginY;
+        return (int)(((maxY-portionY)/lenY) * this.heightCanvas) + marginY;
     }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+
         g.setColor(Color.orange);
         for (node nod: nodes) {
             if(nod == null) continue;
-            System.out.println("X : " + getNodeXCanvas(nod) + " Y : " + getNodeYCanvas(nod));
+            System.out.println("X : " + getNodeXCanvas(nod) + " Y : " + getNodeYCanvas(nod) + " ID : " + nod.id);
             g.fillOval(getNodeXCanvas(nod),getNodeYCanvas(nod),widthOval,heightOval);
             //g.fillOval(100,200,widthOval,heightOval);
         }
+        g.setFont(new Font("nod",Font.ITALIC,15));
+        g.setColor(Color.black);
+        for(node nod: nodes){
+            g.drawString("" + nod.id,(getNodeXCanvas(nod)+widthOval/2),(getNodeYCanvas(nod) + heightOval/2));
+        }
+        g.setColor(Color.blue);
         if(edges != null)
         for(edge ed : edges){
             if(ed == null) continue;
