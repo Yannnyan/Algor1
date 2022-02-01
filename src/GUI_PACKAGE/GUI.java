@@ -1,4 +1,4 @@
-package Convex_Hull;
+package GUI_PACKAGE;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,7 +1,7 @@
-package Convex_Hull;
+package GUI_PACKAGE;
 
 public class node{
-    int id;
+    public int id;
     public double x,y;
     node(double x, double y){
         this.x = x;
