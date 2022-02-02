@@ -30,25 +30,24 @@ public class GUI {
         else
             for (int i = 0; i < nodes.length - 1; i++) {
                 if(nodes[i+1] == null) break;
-                edge ed = new edge( nodes[i], nodes[i+1]);
+                edge ed = new edge( nodes[i], nodes[i+1], 0);
                 edges[i] = ed;
             }
 
         panel.edges = edges;
         panel.repaint();
     }
-}
-
-class edge{
-    public node dest,source;
-    public edge(node dest, node source){
-        this.dest = dest;
-        this.source = source;
+    public void update(edge[] edges){
+        this.panel.specialEdges = edges;
+        this.panel.repaint();
     }
 }
+
 class Panel extends JPanel {
     public node[] nodes;
     public edge[] edges;
+    public boolean displayEdges;
+    public edge[] specialEdges;
     private int widthCanvas,heightCanvas;
     private final int widthOval = 20, heightOval = 20;
     private final int marginX = 100, marginY = 55;
@@ -110,12 +109,19 @@ class Panel extends JPanel {
             g.drawString("" + nod.id,(getNodeXCanvas(nod)+widthOval/2),(getNodeYCanvas(nod) + heightOval/2));
         }
         g.setColor(Color.blue);
-        if(edges != null)
+        if(edges != null && displayEdges)
         for(edge ed : edges){
             if(ed == null) continue;
             g.drawLine(getNodeXCanvas(ed.source ) + widthOval/2,getNodeYCanvas(ed.source)+heightOval/2,
                     getNodeXCanvas(ed.dest) + widthOval/2 , getNodeYCanvas(ed.dest) + heightOval /2);
         }
-        this.requestFocus();
+        g.setColor(Color.GREEN);
+        if(specialEdges != null)
+            for (edge ed : specialEdges) {
+                if(ed == null) continue;
+                g.drawLine(getNodeXCanvas(ed.source ) + widthOval/2,getNodeYCanvas(ed.source)+heightOval/2,
+                        getNodeXCanvas(ed.dest) + widthOval/2 , getNodeYCanvas(ed.dest) + heightOval /2);
+            }
+        //this.requestFocus();
     }
 }

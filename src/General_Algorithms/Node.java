@@ -6,8 +6,8 @@ public class Node {
     public int weight;
     public Node(int id){
         father = null;
-        id = id;
-        weight = 0;
+        this.id = id;
+        weight = 1;
 
     }
 }

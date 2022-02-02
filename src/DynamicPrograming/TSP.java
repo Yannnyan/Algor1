@@ -1,4 +1,4 @@
-package General_Algorithms;
+package DynamicPrograming;
 
 import java.util.ArrayList;
 
@@ -23,8 +23,7 @@ public class TSP {
                 table[0][i] = symetric_adj_matrix[starting_node][i];
         }
         // T(A,i) = min j in A ( T(A-j,j) + weight[j][i] )
-        
-        // create an sub set
+
         /*
             use reduction to counting in binary, make sequences with len n of 0, 1 that represents whether to take the element or not
             , it's an isomorphic function.
