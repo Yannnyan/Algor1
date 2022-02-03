@@ -51,7 +51,7 @@ public class Controller {
     private static ArrayList createEdges(double[][] adj_matrix, HashMap<Integer,node> nodesMap){
         ArrayList<edge> edges = new ArrayList<>();
         for (int i = 0; i < adj_matrix.length; i++)
-            for (int j = 0; j < adj_matrix.length; j++)
+            for (int j = i; j < adj_matrix.length; j++)
                 if(adj_matrix[i][j] != Integer.MAX_VALUE)
                     edges.add(new edge(nodesMap.get(i),nodesMap.get(j),adj_matrix[i][j]));
 
