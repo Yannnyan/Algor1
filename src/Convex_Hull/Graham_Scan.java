@@ -57,7 +57,7 @@ public class Graham_Scan {
         }
         Point minimal_point = points[index];
 
-        quicksort(points,comparator,minimal_point); // sort the list with the comparator
+      //  quicksort(points,comparator,minimal_point); // sort the list with the comparator
         Stack<Point> stack = new Stack<>();
         stack.add(points[0]);
         stack.add(points[1]);

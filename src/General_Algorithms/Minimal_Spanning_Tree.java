@@ -48,7 +48,7 @@ public class Minimal_Spanning_Tree {
             joined.addAll(edges.get(i));
         }
         // quicksort should be implemented with a comparator, not a problem
-        quicksort(joined, comparator1);
+       // quicksort(joined, comparator1);
 
         HashMap<Integer,Node> nodes = new HashMap<>();
         for (int i = 0; i < vertices; i++) {
