@@ -18,9 +18,10 @@ public class union_find {
 
     // returns the complete root of the subSet
     public static Node find(Node current){
-        if(current.father == null)
-            return current;
-        return current.father;
+        Node cur = current;
+        while(cur.father != null)
+            cur = cur.father;
+        return cur;
     }
 
     // does the same as find but points all the nodes in the path to the root
@@ -48,6 +49,20 @@ public class union_find {
         }
         else{
             current_root.father = next_root;
+        }
+
+    }
+    public static void Union_NoCompression(Node node1, Node node2){
+        Node current_root = find(node1);
+        Node next_root = find(node2);
+        if(current_root.id == next_root.id) return;
+        if(current_root.weight > next_root.weight){
+            next_root.father = current_root;
+            current_root.weight += next_root.weight;
+        }
+        else{
+            current_root.father = next_root;
+            next_root.weight += current_root.weight;
         }
     }
 
